@@ -1,0 +1,29 @@
+{
+  "name": "aurelia-datatable-export",
+  "version": "0.0.10",
+  "description": "Aurelia-datatable only export",
+  "keywords": [
+    "aurelia",
+    "csv",
+    "export",
+    "datatable",
+    "spoonx"
+  ],
+  "homepage": "https://github.com/SpoonX/aurelia-datatable-export#readme",
+  "main": "dist/commonjs/aurelia-datatable-export.js",
+  "moduleType": "node",
+  "license": "MIT",
+  "author": "jeremyvergnas <jeremy@spoonx.nl> (http://spoonx.nl)",
+  "contributors": [
+    "RWOverdijk <wesley@spoonx.nl> (http://spoonx.nl/)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SpoonX/aurelia-datatable-export.git"
+  },
+  "dependencies": {
+    "aurelia-binding": "^1.0.0-rc.1.0.0",
+    "aurelia-templating": "^1.0.0-rc.1.0.0",
+    "aurelia-view-manager": "^0.0.7"
+  }
+}
