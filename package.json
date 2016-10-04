@@ -1,35 +1,34 @@
 {
-  "name": "aurelia-pager",
-  "version": "0.0.10",
-  "description": "Aurelia-only pagination",
+  "name": "aurelia-datatable-export",
+  "version": "0.0.1",
+  "description": "Aurelia-datatable only export",
   "bugs": {
-    "url": "https://github.com/SpoonX/aurelia-pager/issues"
+    "url": "https://github.com/SpoonX/aurelia-datatable-export/issues"
   },
   "keywords": [
     "aurelia",
-    "pagination",
-    "pager",
+    "datatable",
+    "export",
     "spoonx"
   ],
-  "homepage": "https://github.com/SpoonX/aurelia-pager#readme",
+  "homepage": "https://github.com/SpoonX/aurelia-datatable-export#readme",
   "license": "MIT",
-  "author": "VMBindraban <vijay@spoonx.nl> (http://spoonx.nl)",
+  "author": "jeremyvergnas <jeremy@spoonx.nl> (http://spoonx.nl)",
   "contributors": [
     "RWOverdijk <wesley@spoonx.nl> (http://spoonx.nl/)"
   ],
-  "main": "dist/commonjs/aurelia-pager.js",
-  "typings": "dist/aurelia-pager.d.ts",
+  "main": "dist/commonjs/aurelia-datatable-export.js",
+  "typings": "dist/aurelia-datatable-export.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/SpoonX/aurelia-pager.git"
+    "url": "git+ssh://git@github.com/SpoonX/aurelia-datatable-export.git"
   },
   "scripts": {
     "test": "./node_modules/.bin/gulp test"
   },
   "jspm": {
     "registry": "npm",
-    "jspmPackage": true,
-    "main": "aurelia-pager",
+    "main": "aurelia-datatable-export",
     "format": "amd",
     "directories": {
       "dist": "dist/amd"
@@ -37,12 +36,8 @@
     "dependencies": {
       "aurelia-binding": "^1.0.0-rc.1.0.0",
       "aurelia-templating": "^1.0.0-rc.1.0.0",
-      "aurelia-view-manager": "^0.0.7"
-    },
-    "peerDependencies": {
-      "aurelia-binding": "^1.0.0-rc.1.0.0",
-      "aurelia-templating": "^1.0.0-rc.1.0.0",
-      "aurelia-view-manager": "^0.0.7"
+      "aurelia-view-manager": "^0.0.7",
+      "json2csv": "^3.7.0"
     },
     "devDependencies": {
       "aurelia-bootstrapper": "^1.0.0",
@@ -112,8 +107,8 @@
   "aurelia": {
     "build": {
       "resources": [
-        "aurelia-pager/pager",
-        "aurelia-pager/bootstrap/pager.html"
+        "aurelia-datatable-export/datatable-export",
+        "aurelia-datatable-export/bootstrap/datatable-export.html"
       ]
     }
   }
