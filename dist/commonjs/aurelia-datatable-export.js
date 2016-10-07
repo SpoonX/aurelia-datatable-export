@@ -5,9 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.configure = configure;
 
-var _datatableExport = require('./datatable-export');
-
 var _aureliaViewManager = require('aurelia-view-manager');
+
+var _datatableExport = require('./datatable-export');
 
 function configure(aurelia) {
   aurelia.container.get(_aureliaViewManager.Config).configureNamespace('aurelia-datatable-export', {

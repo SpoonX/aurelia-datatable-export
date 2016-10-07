@@ -1,5 +1,6 @@
-import {DatatableExport} from './datatable-export';
 import {Config} from 'aurelia-view-manager';
+
+import {DatatableExport} from './datatable-export';
 
 // added for bundling
 // eslint-disable-line no-unused-vars

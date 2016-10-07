@@ -1,5 +1,6 @@
-import { DatatableExport } from './datatable-export';
 import { Config } from 'aurelia-view-manager';
+
+import { DatatableExport } from './datatable-export';
 
 export function configure(aurelia) {
   aurelia.container.get(Config).configureNamespace('aurelia-datatable-export', {
