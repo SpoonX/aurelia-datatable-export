@@ -1,4 +1,3 @@
-import json2csv from 'json2csv';
 import {Config,resolvedView} from 'aurelia-view-manager';
 import {bindable,customElement} from 'aurelia-templating';
 
