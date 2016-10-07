@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./datatable-export', 'aurelia-view-manager'], function (_export, _context) {
+System.register(['aurelia-view-manager', './datatable-export'], function (_export, _context) {
   "use strict";
 
-  var DatatableExport, Config;
+  var Config, DatatableExport;
   function configure(aurelia) {
     aurelia.container.get(Config).configureNamespace('aurelia-datatable-export', {
       location: './{{framework}}/{{view}}.html'
@@ -15,10 +15,10 @@ System.register(['./datatable-export', 'aurelia-view-manager'], function (_expor
   _export('configure', configure);
 
   return {
-    setters: [function (_datatableExport) {
-      DatatableExport = _datatableExport.DatatableExport;
-    }, function (_aureliaViewManager) {
+    setters: [function (_aureliaViewManager) {
       Config = _aureliaViewManager.Config;
+    }, function (_datatableExport) {
+      DatatableExport = _datatableExport.DatatableExport;
     }],
     execute: function () {}
   };

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-datatable-export",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Aurelia-datatable only export",
   "keywords": [
     "aurelia",
@@ -22,8 +22,9 @@
     "url": "git+ssh://git@github.com/SpoonX/aurelia-datatable-export.git"
   },
   "dependencies": {
-    "aurelia-binding": "^1.0.0-rc.1.0.0",
-    "aurelia-templating": "^1.0.0-rc.1.0.0",
-    "aurelia-view-manager": "^0.0.7"
+    "aurelia-binding": "^1.0.0",
+    "aurelia-templating": "^1.0.0",
+    "aurelia-view-manager": "^0.1.0",
+    "json2csv": "^3.7.0"
   }
 }
