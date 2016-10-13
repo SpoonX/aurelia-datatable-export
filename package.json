@@ -39,12 +39,6 @@
       "aurelia-view-manager": "^0.1.0",
       "json2csv": "^3.7.0"
     },
-    "peerDependencies": {
-      "aurelia-binding": "^1.0.0",
-      "aurelia-templating": "^1.0.0",
-      "aurelia-view-manager": "^0.1.0",
-      "json2csv": "^3.7.0"
-    },
     "devDependencies": {
       "aurelia-bootstrapper": "^1.0.0",
       "aurelia-dependency-injection": "^1.0.0",
@@ -58,7 +52,8 @@
     "aurelia-binding": "^1.0.0",
     "aurelia-templating": "^1.0.0",
     "aurelia-view-manager": "^0.1.0",
-    "json2csv": "^3.7.0"
+    "json2csv": "^3.7.0",
+    "js2xmlparser": "^2.0.2"
   },
   "devDependencies": {
     "spoonx-tools": "^0.3.0"
