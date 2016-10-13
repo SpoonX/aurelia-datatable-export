@@ -77,6 +77,5 @@ export class DatatableExport {
     } catch (err) {
       this.datatable.triggerEvent('exception', {on: 'export', error: err});
     }
-
   }
 }
