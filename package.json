@@ -27,7 +27,7 @@
   "scripts": {
     "test": "gulp test",
     "build": "gulp build",
-    "preversion": "npm test",
+    "preversion": "gulp lint",
     "version": "npm run build && gulp prepare-package && git add -A dist doc/CHANGELOG.md bower.json",
     "postpublish": "git push upstream master && git push upstream --tags"
   },
