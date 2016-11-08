@@ -1,11 +1,10 @@
-import {inject}                   from 'aurelia-framework'
+import {inject}                   from 'aurelia-framework';
 import {bindable, customElement}  from 'aurelia-templating';
-import {DOM}                      from 'aurelia-pal'
+import {DOM}                      from 'aurelia-pal';
 import {resolvedView}             from 'aurelia-view-manager';
 import json2csv                   from 'json2csv';
 import js2xmlparser               from 'js2xmlparser';
 
-@inject(DOM)
 @customElement('datatable-export')
 @resolvedView('aurelia-datatable-export', 'datatable-export')
 export class DatatableExport {
@@ -14,10 +13,6 @@ export class DatatableExport {
   @bindable criteria  = {};
   @bindable format    = 'csv';
   @bindable filename  = 'export'
-
-  constructor(dom) {
-    this.dom = dom;
-  }
 
   doExport() {
     if (!this.datatable || !this.format) {
@@ -58,13 +53,13 @@ export class DatatableExport {
       return window.navigator.msSaveBlob(blob, this.filename + '.' + this.format);
     }
 
-    let a = this.dom.createElement('a');
+    let a = DOM.createElement('a');
 
     a.href     = window.URL.createObjectURL(blob, {type: 'text/plain'});
     a.download = this.filename + '.' + this.format;
-    this.dom.appendNode(a);
+    DOM.appendNode(a);
     a.click();
-    this.dom.removeNode(a);
+    DOM.removeNode(a);
   }
 
   csv(data, columns) {
