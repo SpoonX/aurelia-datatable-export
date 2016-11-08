@@ -1,8 +1,11 @@
+import {inject}                   from 'aurelia-framework'
 import {bindable, customElement}  from 'aurelia-templating';
+import {DOM}                      from 'aurelia-pal'
 import {resolvedView}             from 'aurelia-view-manager';
 import json2csv                   from 'json2csv';
 import js2xmlparser               from 'js2xmlparser';
 
+@inject(DOM)
 @customElement('datatable-export')
 @resolvedView('aurelia-datatable-export', 'datatable-export')
 export class DatatableExport {
@@ -12,6 +15,10 @@ export class DatatableExport {
   @bindable format    = 'csv';
   @bindable filename  = 'export'
 
+  constructor(dom) {
+    this.dom = dom;
+  }
+
   doExport() {
     if (!this.datatable || !this.format) {
       return;
@@ -19,7 +26,7 @@ export class DatatableExport {
 
     let rawColumns = (typeof this.columns === 'string' ? this.getColumns().split(',') : this.columns);
 
-    this.datatable.gatherData(this.criteria).then(result => {
+    return this.datatable.gatherData(this.criteria).then(result => {
       this[this.format](result, rawColumns);
     });
   }
@@ -46,17 +53,18 @@ export class DatatableExport {
   download(data) {
     let blob = new Blob([data]);
 
+    // IE hack; see http://msdn.microsoft.com/en-us/library/ie/hh779016.aspx
     if (window.navigator.msSaveOrOpenBlob) {
       return window.navigator.msSaveBlob(blob, this.filename + '.' + this.format);
     }
 
-    let a = window.document.createElement('a');
+    let a = this.dom.createElement('a');
 
     a.href     = window.URL.createObjectURL(blob, {type: 'text/plain'});
     a.download = this.filename + '.' + this.format;
-    document.body.appendChild(a);
+    this.dom.appendNode(a);
     a.click();
-    document.body.removeChild(a);
+    this.dom.removeNode(a);
   }
 
   csv(data, columns) {
