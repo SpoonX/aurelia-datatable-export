@@ -27,14 +27,20 @@ module.exports = {
      *  
      * importsToAdd: ["import {AssociationSelect} from './association-select';"],
      */
-     importsToAdd: ["import {DatatableExport} from './datatable-export';"],
+     importsToAdd: [
+       "import {DatatableExport} from './datatable-export';",
+       "import {ConvertManagerValueConverter} from './convert-manager';"
+     ],
 
     /* js to be transpiled, but not be concated
      * (ValueConverters, CustomElements)
      *
      * jsResources: [appRoot + 'association-select.js'],
      */
-     jsResources: [appRoot + 'datatable-export.js'],
+     jsResources: [
+       appRoot + 'datatable-export.js',
+       appRoot + 'convert-manager.js'
+     ],
 
     /* other resources that need to get copied keeping their path
      * resources: appRoot + '{** / *.css,** / *.html}',
@@ -46,7 +52,10 @@ module.exports = {
      *
      * importsToIgnoreForDts: ['extend'],
      */
-    importsToIgnoreForDts: ['json2csv'],
+    importsToIgnoreForDts: [
+      'json2csv',
+      'typer'
+    ],
 
     /* sort when concating
      * sort: true,
