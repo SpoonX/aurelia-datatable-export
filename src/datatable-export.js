@@ -1,9 +1,8 @@
-import {inject}                   from 'aurelia-framework';
-import {bindable, customElement}  from 'aurelia-templating';
-import {DOM}                      from 'aurelia-pal';
-import {resolvedView}             from 'aurelia-view-manager';
-import json2csv                   from 'json2csv';
-import js2xmlparser               from 'js2xmlparser';
+import {bindable, customElement} from 'aurelia-templating';
+import {DOM}                     from 'aurelia-pal';
+import {resolvedView}            from 'aurelia-view-manager';
+import json2csv                  from 'json2csv';
+import js2xmlparser              from 'js2xmlparser';
 
 @customElement('datatable-export')
 @resolvedView('aurelia-datatable-export', 'datatable-export')
