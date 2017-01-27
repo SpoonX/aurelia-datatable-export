@@ -13,13 +13,18 @@ export class DatatableExport {
   @bindable criteria  = {};
   @bindable format    = 'csv';
   @bindable filename  = 'export'
+  @bindable data;
 
   doExport() {
+    let rawColumns = (typeof this.columns === 'string' ? this.getColumns().split(',') : this.columns);
+
+    if (this.data) {
+      return this[this.format](this.data, this.columns);
+    }
+
     if (!this.datatable || !this.format) {
       return;
     }
-
-    let rawColumns = (typeof this.columns === 'string' ? this.getColumns().split(',') : this.columns);
 
     return this.datatable.gatherData(this.criteria).then(result => {
       this[this.format](result, rawColumns);

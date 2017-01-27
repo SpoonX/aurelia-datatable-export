@@ -21,10 +21,10 @@ module.exports = {
      * useTypeScriptForDTS: false,
      */
 
-    /* Imports to append to the import block of the main file. 
-     * Add here eg. non-concated local imports in the main file as they will 
+    /* Imports to append to the import block of the main file.
+     * Add here eg. non-concated local imports in the main file as they will
      * get removed during the build process (ValueConverters, CustomElements).
-     *  
+     *
      * importsToAdd: ["import {AssociationSelect} from './association-select';"],
      */
      importsToAdd: ["import {DatatableExport} from './datatable-export';"],
@@ -40,13 +40,13 @@ module.exports = {
      * resources: appRoot + '{** / *.css,** / *.html}',
      */
      resources: appRoot + '{**/*.css,**/*.html}',
-  
+
 
     /* imports that are only used internally, eg 'extend'. no need to d.ts export them
      *
      * importsToIgnoreForDts: ['extend'],
      */
-    importsToIgnoreForDts: ['json2csv'],
+    importsToIgnoreForDts: ['json2csv', 'js2xmlparser'],
 
     /* sort when concating
      * sort: true,
