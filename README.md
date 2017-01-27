@@ -15,6 +15,10 @@ Aurelia-datatable-export needs following plugins installed and configured:
 
 The [changelog](doc/CHANGELOG.md) provides you with information about important changes.
 
+### data
+
+Binding to `data` gives the opportunity to use custom data that is not related to datatable.
+
 ## Installation
 
 ### Aureli-Cli

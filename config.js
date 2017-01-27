@@ -16,6 +16,7 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.1.1",
     "aurelia-testing": "npm:aurelia-testing@1.0.0-beta.2.0.0",
     "aurelia-view-manager": "npm:aurelia-view-manager@0.1.0",
+    "js2xmlparser": "npm:js2xmlparser@2.0.2",
     "json2csv": "npm:json2csv@3.7.1",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.4.1"
@@ -212,6 +213,9 @@ System.config({
     "npm:is-buffer@1.1.4": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
     },
+    "npm:js2xmlparser@2.0.2": {
+      "xmlcreate": "npm:xmlcreate@0.1.1"
+    },
     "npm:json2csv@3.7.1": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "cli-table": "npm:cli-table@0.3.1",
@@ -263,6 +267,9 @@ System.config({
     },
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
+    },
+    "npm:xmlcreate@0.1.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
     }
   }
 });
