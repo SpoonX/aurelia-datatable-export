@@ -1,9 +1,14 @@
-import { Config } from 'aurelia-view-manager';
+'use strict';
 
-import { DatatableExport } from './datatable-export';
+exports.__esModule = true;
+exports.configure = configure;
 
-export function configure(aurelia) {
-  aurelia.container.get(Config).configureNamespace('aurelia-datatable-export', {
+var _aureliaViewManager = require('aurelia-view-manager');
+
+var _datatableExport = require('./datatable-export');
+
+function configure(aurelia) {
+  aurelia.container.get(_aureliaViewManager.Config).configureNamespace('aurelia-datatable-export', {
     location: './{{framework}}/{{view}}.html'
   });
 

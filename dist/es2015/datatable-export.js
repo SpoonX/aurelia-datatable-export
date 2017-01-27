@@ -1,4 +1,4 @@
-var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+var _dec, _dec2, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
 
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
@@ -44,8 +44,10 @@ function _initializerWarningHelper(descriptor, context) {
 }
 
 import { bindable, customElement } from 'aurelia-templating';
+import { DOM } from 'aurelia-pal';
 import { resolvedView } from 'aurelia-view-manager';
 import json2csv from 'json2csv';
+import js2xmlparser from 'js2xmlparser';
 
 export let DatatableExport = (_dec = customElement('datatable-export'), _dec2 = resolvedView('aurelia-datatable-export', 'datatable-export'), _dec(_class = _dec2(_class = (_class2 = class DatatableExport {
   constructor() {
@@ -54,33 +56,82 @@ export let DatatableExport = (_dec = customElement('datatable-export'), _dec2 = 
     _initDefineProp(this, 'datatable', _descriptor2, this);
 
     _initDefineProp(this, 'criteria', _descriptor3, this);
+
+    _initDefineProp(this, 'format', _descriptor4, this);
+
+    _initDefineProp(this, 'filename', _descriptor5, this);
+
+    _initDefineProp(this, 'data', _descriptor6, this);
   }
 
   doExport() {
-    if (!this.datatable) {
+    let rawColumns = typeof this.columns === 'string' ? this.getColumns().split(',') : this.columns;
+
+    if (this.data) {
+      return this[this.format](this.data, this.columns);
+    }
+
+    if (!this.datatable || !this.format) {
       return;
     }
 
     return this.datatable.gatherData(this.criteria).then(result => {
-      try {
-        let csv = json2csv({ data: result, fields: this.columns });
-        let blob = new Blob([csv]);
-
-        if (window.navigator.msSaveOrOpenBlob) {
-          return window.navigator.msSaveBlob(blob, 'export.csv');
-        }
-
-        let a = window.document.createElement('a');
-
-        a.href = window.URL.createObjectURL(blob, { type: 'text/plain' });
-        a.download = 'export.csv';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      } catch (err) {
-        this.datatable.triggerEvent('exception', { on: 'export', error: err });
-      }
+      this[this.format](result, rawColumns);
     });
+  }
+
+  getColumns() {
+    let cleanedColumns = this.columns;
+
+    cleanedColumns = cleanedColumns.replace(/\sas\s.*[\,]/gi, ',');
+    cleanedColumns = cleanedColumns.replace(/\s\|\s.*[\,]/gi, ',');
+
+    if (cleanedColumns.indexOf(' as ') > -1) {
+      cleanedColumns = cleanedColumns.substring(0, cleanedColumns.indexOf(' as '));
+    }
+    if (cleanedColumns.indexOf(' | ') > -1) {
+      cleanedColumns = cleanedColumns.substring(0, cleanedColumns.indexOf(' | '));
+    }
+
+    cleanedColumns = cleanedColumns.replace(/\s/g, '');
+
+    return cleanedColumns;
+  }
+
+  download(data) {
+    let blob = new Blob([data]);
+
+    if (window.navigator.msSaveOrOpenBlob) {
+      return window.navigator.msSaveBlob(blob, this.filename + '.' + this.format);
+    }
+
+    let a = DOM.createElement('a');
+
+    a.href = window.URL.createObjectURL(blob, { type: 'text/plain' });
+    a.download = this.filename + '.' + this.format;
+    DOM.appendNode(a);
+    a.click();
+    DOM.removeNode(a);
+  }
+
+  csv(data, columns) {
+    try {
+      let csv = json2csv({ data: data, fields: columns });
+
+      this.download(csv);
+    } catch (err) {
+      this.datatable.triggerEvent('exception', { on: 'export', error: err });
+    }
+  }
+
+  xml(data) {
+    try {
+      let xml = js2xmlparser.parse(this.datatable.resource, data);
+
+      this.download(xml);
+    } catch (err) {
+      this.datatable.triggerEvent('exception', { on: 'export', error: err });
+    }
   }
 }, (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'columns', [bindable], {
   enumerable: true,
@@ -97,4 +148,17 @@ export let DatatableExport = (_dec = customElement('datatable-export'), _dec2 = 
   initializer: function () {
     return {};
   }
+}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'format', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return 'csv';
+  }
+}), _descriptor5 = _applyDecoratedDescriptor(_class2.prototype, 'filename', [bindable], {
+  enumerable: true,
+  initializer: function () {
+    return 'export';
+  }
+}), _descriptor6 = _applyDecoratedDescriptor(_class2.prototype, 'data', [bindable], {
+  enumerable: true,
+  initializer: null
 })), _class2)) || _class) || _class);
