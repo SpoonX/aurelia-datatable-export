@@ -1,4 +1,3 @@
-import {inject}                   from 'aurelia-framework';
 import {bindable, customElement}  from 'aurelia-templating';
 import {DOM}                      from 'aurelia-pal';
 import {resolvedView}             from 'aurelia-view-manager';
